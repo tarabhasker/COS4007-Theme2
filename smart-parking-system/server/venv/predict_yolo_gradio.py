@@ -10,7 +10,7 @@ def load_model(path):
     return torch.load(path, map_location="cpu", weights_only=False)
 
 # Load YOLOv8 model
-model = YOLO("best.pt")  # will work now because we’re using torch <2.6 and no safe_globals
+model = YOLO("best_2.pt")  # will work now because we’re using torch <2.6 and no safe_globals
 
 # Define prediction function
 def predict(image):

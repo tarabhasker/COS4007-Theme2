@@ -124,7 +124,7 @@ const ModelPage = () => {
         {showGradio && (
           <div ref={gradioRef} className="gradio-section">
             <iframe
-              src="https://c0e5acd22e545918cc.gradio.live"
+              src="https://3212b9c4ba79d106b5.gradio.live"
               title="YOLOv8 Gradio Interface"
               width="100%"
               height="650"
