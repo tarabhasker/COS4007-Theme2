@@ -272,6 +272,10 @@
     border: 2px solid #66ff99; /* green border */
     box-shadow: 0 0 15px 3px #66ff99; /* green glow */
   }
-  
+    .recharts-bar-rectangle:hover {
+    filter: brightness(1.7);
+    transition: filter 0.2s ease;
+}
+
   
   
