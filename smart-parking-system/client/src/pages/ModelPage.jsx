@@ -14,8 +14,8 @@ import Sidebar from './Sidebar';
 
 
 const locations = [
-  "Swinburne Multi Storey - Level 1A", "1B", "2A", "2B", "3A", "3B",
-  "4A", "4B", "5A", "5B", "6A", "6B", "Swinburne Outdoor"
+  "Swinburne Multi Storey - Level 1A", "Swinburne Multi Storey - Level 1B", "Swinburne Multi Storey - Level 2A", "Swinburne Multi Storey - Level 2B", "Swinburne Multi Storey - Level 3A", "Swinburne Multi Storey - Level 3B",
+  "Swinburne Multi Storey - Level 4A", "Swinburne Multi Storey - Level 4B", "Swinburne Multi Storey - Level 5A", "Swinburne Multi Storey - Level 5B", "Swinburne Multi Storey - Level 6A", "Swinburne Multi Storey - Level 6B", "Swinburne Outdoor"
 ];
 
 const times = Array.from({ length: 24 }, (_, i) =>
@@ -30,6 +30,7 @@ const ModelPage = () => {
   const [showGradio, setShowGradio] = useState(false);
   const gradioRef = useRef(null);
   const navigate = useNavigate();
+  const [gradioConfirmed, setGradioConfirmed] = useState(false);
 
   useEffect(() => {
     if (selectedModel && location && date && time) {
@@ -120,18 +121,40 @@ const ModelPage = () => {
           </div>
         </div>
 
-        {/* Gradio Embed */}
         {showGradio && (
-          <div ref={gradioRef} className="gradio-section">
-            <iframe
-              src="https://8f44a067e512312359.gradio.live"
-              title="YOLOv8 Gradio Interface"
-              width="100%"
-              height="650"
-              style={{ border: 'none', borderRadius: '12px' }}
-            />
-          </div>
-        )}
+  <div ref={gradioRef} className="gradio-section">
+    <iframe
+      src="https://9113554a56827dc8c5.gradio.live"
+      title="YOLOv8 Gradio Interface"
+      width="100%"
+      height="650"
+      style={{ border: 'none', borderRadius: '12px' }}
+    />
+
+    {/* Button container UNDER the Gradio interface */}
+    <div className="text-center mt-4">
+  {!gradioConfirmed ? (
+    <button
+      onClick={() => setGradioConfirmed(true)}
+      className="btn model-action-btn"
+    >
+      Confirm Output
+    </button>
+  ) : (
+    <button
+      onClick={() => alert('Data added to database!')}
+      className="btn model-action-btn"
+    >
+      Add to Database
+    </button>
+  )}
+</div>
+  </div>
+)}
+
+
+
+
 
         {/* Footer Features */}
         <div className="features">

@@ -3,9 +3,9 @@ import json
 from ultralytics import YOLO
 
 # ==== CONFIGURATION ====
-MODEL_PATH = 'server/venv/best_1.pt'   # Change if needed
-DATASET_PATH = 'Data/outdoor'                          # Folder with time-based subfolders
-OUTPUT_FILE = 'client/public/popular_times_outdoor.json'  # Save output JSON here
+MODEL_PATH = '../server/venv/final_best-tara.pt'   # Change if needed
+DATASET_PATH = '../Data/outdoor'                          # Folder with time-based subfolders
+OUTPUT_FILE = '../client/public/popular_times_outdoor.json'  # Save output JSON here
 # ========================
 
 # Load model

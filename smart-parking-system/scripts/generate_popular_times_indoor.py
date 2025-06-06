@@ -3,9 +3,9 @@ import json
 from ultralytics import YOLO
 
 # ==== CONFIGURATION ====
-MODEL_PATH = 'server/venv/best_1.pt'  # Your model path
-DATASET_PATH = 'Data/Indoor'          # <-- Updated path for Indoor
-OUTPUT_FILE = 'client/public/popular_times_indoor.json'  # Output for indoor
+MODEL_PATH = '../server/venv/final_best-tara.pt'  # Your model path
+DATASET_PATH = '../Data/Indoor'          # <-- Updated path for Indoor
+OUTPUT_FILE = '../client/public/popular_times_indoor.json'  # Output for indoor
 # ========================
 
 # Load model

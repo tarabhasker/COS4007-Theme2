@@ -160,6 +160,8 @@
     display: flex;
     justify-content: center;
     border-radius: 12px;
+    flex-direction: column;
+    align-items: center;
   }
   
   .gradio-section iframe {
@@ -275,6 +277,24 @@
     .recharts-bar-rectangle:hover {
     filter: brightness(1.7);
     transition: filter 0.2s ease;
+}
+.model-action-btn {
+  margin-top: 2rem;
+  background-color: transparent;
+  border: 2px solid #33ff99;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 1rem;
+}
+
+.model-action-btn:hover {
+  background-color: #33ff99;
+  color: black;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(102, 255, 153, 0.4);
 }
 
   
