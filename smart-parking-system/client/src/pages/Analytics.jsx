@@ -1,33 +1,99 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './HomePage.css';
+import React, { useEffect, useState } from 'react';
+import Select from 'react-select';
 import { FaArrowUp, FaHandPointer, FaCalendarAlt, FaClock } from 'react-icons/fa';
 import Sidebar from './Sidebar';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import dayjs from 'dayjs';
-import Select from 'react-select';
 
 const viewOptions = [
   { value: 'outdoor', label: 'Outdoor' },
   { value: 'indoor', label: 'Indoor' },
 ];
 
-const AnalyticsPage = () => {
-  const navigate = useNavigate();
+const TOTAL_CAPACITY = {
+  'Multi': 381,
+  'Outdoor': 150
+};
+
+const dropdownStyles = {
+  control: (base) => ({
+    ...base,
+    borderRadius: '999px',
+    padding: '2px 6px',
+    fontSize: '0.85rem',
+    backgroundColor: '#1e1e1e',
+    border: '1px solid #333',
+    color: '#fff',
+    fontWeight: 'bold',
+    width: 130,
+    minHeight: '32px',
+  }),
+  menu: (base) => ({
+    ...base,
+    backgroundColor: '#1e1e1e',
+    color: '#fff',
+    zIndex: 10,
+  }),
+  singleValue: (base) => ({
+    ...base,
+    color: '#fff',
+    fontWeight: 'bold'
+  }),
+  option: (base, { isFocused }) => ({
+    ...base,
+    backgroundColor: isFocused ? '#333' : '#1e1e1e',
+    color: '#fff',
+    padding: '10px 15px',
+    fontWeight: 'bold'
+  }),
+  menuPortal: base => ({ 
+    ...base, 
+    zIndex: 9999 
+  }),
+};
+
+const CombinedAnalyticsPage = () => {
+  const [combinedData, setCombinedData] = useState([]);
+  const [selectedLocation, setSelectedLocation] = useState({ value: 'Multi', label: 'Multi' });
+  const [selectedTime, setSelectedTime] = useState(null);
+  const [timeOptions, setTimeOptions] = useState([]);
+  const [occupancyPercent, setOccupancyPercent] = useState(0);
+
   const [viewType, setViewType] = useState('outdoor');
   const [popularData, setPopularData] = useState([]);
   const [averageStay, setAverageStay] = useState(0);
 
   useEffect(() => {
-    const file = viewType === 'indoor' ? '/popular_times_indoor.json' : '/popular_times_outdoor.json';
+    fetch('/combined_occupancy.json')
+      .then(res => res.json())
+      .then(json => {
+        const times = [...new Set(json.occupancy_data.map(d => d.time))];
+        setTimeOptions(times.map(t => ({ value: t, label: t })));
+        setSelectedTime({ value: times[0], label: times[0] });
+        setCombinedData(json.occupancy_data);
+      });
+  }, []);
 
+  useEffect(() => {
+    if (!selectedTime || !selectedLocation || combinedData.length === 0) return;
+
+    const filtered = combinedData.filter(d => {
+      const isOutdoor = d.location_type.toLowerCase() === 'outdoor';
+      const matchLocation = selectedLocation.value === 'Outdoor' ? isOutdoor : !isOutdoor;
+      return matchLocation && d.time === selectedTime.value;
+    });
+
+    const totalDetected = filtered.reduce((sum, d) => sum + d.vehicle_count, 0);
+    const percent = (totalDetected / TOTAL_CAPACITY[selectedLocation.value]) * 100;
+    setOccupancyPercent(Math.min(100, Math.round(percent)));
+  }, [selectedTime, selectedLocation, combinedData]);
+
+  useEffect(() => {
+    const file = viewType === 'indoor' ? '/popular_times_indoor.json' : '/popular_times_outdoor.json';
     fetch(file)
       .then(res => res.json())
       .then(json => {
-        const formatted = Object.entries(json).map(([hour, count]) => ({
-          hour,
-          vehicles: count
-        }));
+        const formatted = Object.entries(json).map(([hour, count]) => ({ hour, vehicles: count }));
         setPopularData(formatted);
 
         const totalVehicles = formatted.reduce((sum, item) => sum + item.vehicles, 0);
@@ -37,127 +103,84 @@ const AnalyticsPage = () => {
       });
   }, [viewType]);
 
-  const CustomTooltip = ({ active, payload, label }) => {
-    if (active && payload && payload.length) {
-      return (
-        <div
-          style={{
-            background: 'rgba(0, 0, 0, 0.85)',
-            border: '1px solid #00ff99',
-            borderRadius: '10px',
-            padding: '10px 14px',
-            color: '#ccffcc',
-            fontSize: '14px',
-            boxShadow: '0 0 10px #00ff88',
-            backdropFilter: 'blur(4px)',
-          }}
-        >
-          <div style={{ fontWeight: 'bold', color: '#66ffcc' }}>{label}</div>
-          <div>🚗 Vehicles: <strong>{payload[0].value}</strong></div>
-        </div>
-      );
-    }
-    return null;
+  const getBarColor = () => {
+    if (occupancyPercent >= 80) return '#ff4c4c';
+    if (occupancyPercent >= 50) return '#ffd700';
+    return '#00ff66';
   };
 
   return (
     <div className="homepage">
       <Sidebar />
       <div className="main-content">
-        <div className="header">
-          <h1 className="home-title">Analytics Dashboard</h1>
-          <div className="stats">
-            <div className="stat">
-              <h2>1,050 <span className="stat-icon"><FaArrowUp /></span></h2>
-              <p>Image Uploads</p>
-            </div>
-            <div className="stat">
-              <h2>34 <span className="stat-icon"><FaHandPointer /></span></h2>
-              <p>New requests</p>
-            </div>
-          </div>
-        </div>
+        <h1 className="home-title">Analytics Dashboard</h1>
 
-        {/* Dropdown Section */}
-        <div className="dropdown-container">
-          <label className="dropdown-label">Select View</label>
-          <div className="dropdown-wrapper">
+        {/* Single Occupancy Bar */}
+        <div style={{ marginBottom: '2rem' }}>
+          <h2 style={{ marginBottom: '1rem', color: 'white' }}>Occupancy Dashboard</h2>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginBottom: '2rem' }}>
             <Select
-              value={viewOptions.find(opt => opt.value === viewType)}
-              onChange={(selected) => setViewType(selected.value)}
-              options={viewOptions}
-              styles={{
-                control: (base) => ({
-                  ...base,
-                  backgroundColor: '#121212',
-                  borderColor: '#00ff88',
-                  color: '#b7ffbf',
-                  borderRadius: '6px',
-                  padding: '4px 6px',
-                  boxShadow: '0 0 8px #00ff88',
-                }),
-                
-                option: (base, state) => ({
-                  ...base,
-                  backgroundColor: state.isFocused
-                    ? '#005533'
-                    : state.isSelected
-                    ? '#00ff88'
-                    : '#121212',
-                  color: '#ccffcc',
-                  cursor: 'pointer',
-                }),
-                menu: (base) => ({
-                  ...base,
-                  backgroundColor: '#0d0d0d',
-                  borderRadius: '6px',
-                  boxShadow: '0 0 10px #00ff88',
-                }),
-                singleValue: (base) => ({
-                  ...base,
-                  color: '#b7ffbf',
-                  fontWeight: 'bold',
-                }),
-                dropdownIndicator: () => null,
-                indicatorSeparator: () => ({ display: 'none' }),
-              }}
+              options={[{ value: 'Multi', label: 'Multi' }, { value: 'Outdoor', label: 'Outdoor' }]}
+              value={selectedLocation}
+              onChange={(option) => setSelectedLocation(option)}
+              styles={dropdownStyles}
+            />
+            <Select
+              options={timeOptions}
+              value={selectedTime}
+              onChange={(option) => setSelectedTime(option)}
+              styles={dropdownStyles}
+              menuPortalTarget={document.body}
             />
           </div>
+
+          <div style={{ background: '#111', padding: '1rem', borderRadius: '1rem', maxWidth: '600px', margin: '0 auto' }}>
+            <h3 style={{ color: '#00ff66' }}>Occupancy</h3>
+            <div style={{ background: '#333', borderRadius: '1rem', height: '30px', overflow: 'hidden', position: 'relative' }}>
+              <div style={{ width: `${occupancyPercent}%`, height: '100%', background: getBarColor(), transition: 'width 0.5s ease-in-out' }} />
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.5rem', fontSize: '14px', color: 'white' }}>
+              <span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span>
+            </div>
+          </div>
+
+          <div style={{ marginTop: '1rem', fontSize: '14px', textAlign: 'center', color: 'white' }}>
+            <span style={{ color: '#00ff66' }}>■ Low (0–49%) </span>
+            <span style={{ color: '#ffd700', marginLeft: '1rem' }}>■ Medium (50–79%) </span>
+            <span style={{ color: '#ff4c4c', marginLeft: '1rem' }}>■ High (80–100%)</span>
+          </div>
         </div>
 
-
-        {/* Chart Section */}
-        <div
-          className="chart-section"
-          style={{
-            marginTop: '2rem',
-            padding: '2rem',
-            backgroundColor: '#0d0d0d',
-            borderRadius: '12px',
-            boxShadow: '0 0 25px rgba(0, 255, 100, 0.2)',
-            color: '#d1ffd6'
-          }}
-        >
-          <div
-            className="flex items-center mb-6"
-            style={{ display: 'flex', justifyContent: 'space-between' }}
-          >
-            <h2
-              id="popular-title"
-              className="text-2xl font-semibold text-green-400 tracking-wide"
-              style={{ flex: 1, textAlign: 'left' }}
-            >
-              Popular Times Overview
-            </h2>
-            <div
-              id="datetime-info"
-              className="flex gap-2 text-green-300 text-sm font-medium justify-end"
-              style={{ flex: 1, textAlign: 'right' }}
-            >
-              <FaCalendarAlt className="text-green-400" />
-              <strong>{dayjs().format('   dddd')}</strong><br></br>
-              <FaClock className="ml-2 text-green-400" />
-              <strong>{dayjs().format('   h:mm A')}</strong>
+         {/* Popular Times Dashboard */}
+          <div style={{ marginBottom: '2rem' }}>
+            <h2 style={{ marginBottom: '1rem', color: 'white' }}>Popular Times Dashboard</h2>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginBottom: '2rem' }}>
+              <Select
+                value={viewOptions.find(opt => opt.value === viewType)}
+                onChange={(selected) => setViewType(selected.value)}
+                options={viewOptions}
+                styles={dropdownStyles}
+                menuPortalTarget={document.body}
+              />
+            </div>
+          </div>
+              {/* Popular Times Chart Box */}
+        <div style={{
+          width: '100%',
+          maxWidth: '700px',
+          minWidth: '400px',
+          margin: '0 auto',
+          padding: '2rem',
+          backgroundColor: '#0d0d0d',
+          borderRadius: '12px',
+          boxShadow: '0 0 25px rgba(0, 255, 100, 0.2)',
+          color: '#d1ffd6'
+        }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap' }}>
+            <h3 style={{ color: '#ffffff', marginBottom: '10px' }}>Popular Times Overview</h3>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', fontSize: '14px', color: '#99ffcc' }}>
+              <div><FaCalendarAlt className="text-green-400" /> <strong>{dayjs().format('dddd')}</strong></div>
+              <div><FaClock className="text-green-400" /> <strong>{dayjs().format('h:mm A')}</strong></div>
             </div>
           </div>
 
@@ -165,13 +188,13 @@ const AnalyticsPage = () => {
             <BarChart data={popularData}>
               <XAxis dataKey="hour" stroke="#88ffcc" />
               <YAxis allowDecimals={false} stroke="#88ffcc" />
-              <Tooltip content={<CustomTooltip />} cursor={{ fill: 'transparent' }} />
-              <Bar
-                dataKey="vehicles"
-                fill="url(#greenGradient)"
-                barSize={24}
-                radius={[4, 4, 0, 0]}
-              />
+              <Tooltip content={({ active, payload, label }) => active && payload && payload.length ? (
+                <div style={{ background: 'rgba(0, 0, 0, 0.85)', border: '1px solid #00ff99', borderRadius: '10px', padding: '10px 14px', color: '#ccffcc', fontSize: '14px' }}>
+                  <div style={{ fontWeight: 'bold', color: '#66ffcc' }}>{label}</div>
+                  <div>🚗 Vehicles: <strong>{payload[0].value}</strong></div>
+                </div>
+              ) : null} cursor={{ fill: 'transparent' }} />
+              <Bar dataKey="vehicles" fill="url(#greenGradient)" barSize={24} radius={[4, 4, 0, 0]} />
               <defs>
                 <linearGradient id="greenGradient" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0%" stopColor="#00ff88" />
@@ -181,67 +204,13 @@ const AnalyticsPage = () => {
             </BarChart>
           </ResponsiveContainer>
 
-          <div
-            className="mt-6 text-sm flex flex-col gap-2 rounded-md px-4 py-3"
-            style={{
-              color: '#ccffcc',
-              marginTop: '2rem',
-              textAlign: 'center',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <div>
-              People typically spend up to <strong className="text-green-400">{averageStay} hours</strong> here.
-            </div>
+          <div style={{ marginTop: '2rem', textAlign: 'center', color: '#ccffcc' }}>
+            People typically spend up to <strong className="text-green-400">{averageStay} hours</strong> here.
           </div>
         </div>
       </div>
-
-      {/* Custom Dropdown CSS inlined */}
-      <style>{`
-        .dropdown-container {
-          margin-top: 1rem;
-          margin-bottom: 1rem;
-        }
-
-        .dropdown-label {
-          color: #b7ffbf;
-          font-weight: 600;
-          font-size: 0.9rem;
-          margin-bottom: 6px;
-          display: block;
-        }
-
-        .dropdown-wrapper {
-          position: relative;
-          width: 220px;
-        }
-
-        .dropdown-select {
-          width: 100%;
-          padding: 10px 40px 10px 12px;
-          background: linear-gradient(to bottom, #1d1f20, #0f1011);
-          color: #b7ffbf;
-          border: 1px solid #2f2f2f;
-          border-radius: 6px;
-          font-weight: bold;
-          font-size: 14px;
-          appearance: none;
-          box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
-          transition: border 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .dropdown-select:hover,
-        .dropdown-select:focus {
-          border-color: #00ff88;
-          outline: none;
-          box-shadow: 0 0 6px #00ff88;
-        }
-
-      `}</style>
     </div>
   );
 };
 
-export default AnalyticsPage;
+export default CombinedAnalyticsPage;
