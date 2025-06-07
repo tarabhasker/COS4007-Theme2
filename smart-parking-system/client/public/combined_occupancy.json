@@ -964,11 +964,11 @@
   "popular_times": {
     "Indoor": {
       "10am": 123,
-      "11am": 139,
+      "11am": 146,
       "12pm": 111,
       "1pm": 85,
-      "2pm": 146,
-      "3pm": 124,
+      "2pm": 153,
+      "3pm": 130,
       "4pm": 131,
       "5pm": 105
     },
@@ -1003,6 +1003,18 @@
       "location": "3B",
       "time": "12pm",
       "vehicle_count": 7
+    },
+    {
+      "location_type": "Indoor",
+      "location": "1B",
+      "time": "2pm",
+      "vehicle_count": 7
+    },
+    {
+      "location_type": "Indoor",
+      "location": "4B",
+      "time": "3pm",
+      "vehicle_count": 6
     }
   ],
   "2025-06-10": [
@@ -1019,6 +1031,14 @@
       "location": "1B",
       "time": "2am",
       "vehicle_count": 21
+    }
+  ],
+  "2025-06-19": [
+    {
+      "location_type": "Indoor",
+      "location": "1B",
+      "time": "11am",
+      "vehicle_count": 7
     }
   ]
 }

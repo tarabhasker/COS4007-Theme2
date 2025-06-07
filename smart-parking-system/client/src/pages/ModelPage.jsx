@@ -52,6 +52,8 @@ const ModelPage = () => {
     formData.append("location", location);
     formData.append("date", date);
     formData.append("time", time);
+    formData.append("model", selectedModel);
+
 
     try {
       const response = await fetch("http://localhost:5000/predict", {
@@ -180,8 +182,8 @@ const ModelPage = () => {
               * Upload the same image to test the model out before adding to database
             </p>
             <iframe
-              src="https://9113554a56827dc8c5.gradio.live"
-              title="YOLOv8 Gradio Interface"
+              src={`https://1e2d3ba3ec199f67e1.gradio.live?model=${selectedModel}`} // 👈 dynamic model
+              title="YOLO Gradio Interface"
               width="100%"
               height="650"
               style={{ border: 'none', borderRadius: '12px' }}

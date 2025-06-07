@@ -170,9 +170,12 @@ const CombinedAnalyticsPage = () => {
       <div className="main-content">
         <h1 className="home-title">Analytics Dashboard</h1>
 
-        <div style={{ display: 'flex', gap: '2rem', alignItems: 'flex-start', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', gap: '2rem', alignItems: 'flex-start', flexWrap: 'nowrap' }}>
         {/* LEFT SIDE: Occupancy + Popular */}
-        <div style={{ flex: '1 1 600px', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+        <div style={{ flex: '1', maxWidth: '100%', minWidth: '700px', maxWidth: '700px' }}>
+    <div style={{ transform: 'scale(0.75)', transformOrigin: 'top left', width: '133.33%' }}>
+          <div style={{ flex: '1 1 600px', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+
         <div style={{
           marginBottom: '3rem',
           marginTop:'3rem',
@@ -338,14 +341,17 @@ const CombinedAnalyticsPage = () => {
             )}
           </div>
           </div>
-
+          </div>
+          </div>
         </div>
         </div>
 
         {/* RIGHT SIDE: Average Occupancy Area Chart */}
+        <div style={{ flex: '0 0 40%', minWidth: '500px', height: '850px' }}>
+    <div style={{ transform: 'scale(0.75)', transformOrigin: 'top left', width: '133.33%' }}>
         <div style={{
           flex: '0 0 700px',
-          minWidth: '700px',
+          minWidth: '550px',
           height: '900px',
           padding: '2rem',
           border: '1px solid #04075e',
@@ -408,6 +414,8 @@ const CombinedAnalyticsPage = () => {
               </AreaChart>
             </ResponsiveContainer>
           </div>
+        </div>
+        </div>
         </div>
         </div>
       </div>

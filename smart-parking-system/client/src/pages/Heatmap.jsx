@@ -48,16 +48,6 @@ const HeatmapPage = () => {
             />
             <h1 className="home-title">Occupancy Heatmap</h1>
           </div>
-          <div className="stats">
-            <div className="stat">
-              <h2>1,050 <span className="stat-icon"><FaArrowUp /></span></h2>
-              <p>Image Uploads</p>
-            </div>
-            <div className="stat">
-              <h2>34 <span className="stat-icon"><FaHandPointer /></span></h2>
-              <p>New requests</p>
-            </div>
-          </div>
         </div>
 
         {/* Controls */}
