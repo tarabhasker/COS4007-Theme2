@@ -19,20 +19,7 @@ const HomePage = () => {
       <div className="main-content">
       <div className="header">
       <h1 className="home-title">Home</h1>
-        <div className="stats">
-            <div className="stat">
-            <h2>
-                1,050 <span className="stat-icon"><FaArrowUp /></span>
-            </h2>
-            <p>Image Uploads</p>
-            </div>
-            <div className="stat">
-            <h2>
-                34 <span className="stat-icon"><FaHandPointer /></span>
-            </h2>
-            <p>New requests</p>
-            </div>
-        </div>
+        
         </div>
 
         <div className="hero-section">

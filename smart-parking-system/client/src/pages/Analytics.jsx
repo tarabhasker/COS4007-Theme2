@@ -4,6 +4,8 @@ import { FaArrowUp, FaHandPointer, FaCalendarAlt, FaClock } from 'react-icons/fa
 import Sidebar from './Sidebar';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import dayjs from 'dayjs';
+import { AreaChart, Area, Legend } from 'recharts';
+
 
 const viewOptions = [
   { value: 'outdoor', label: 'Outdoor' },
@@ -58,50 +60,103 @@ const CombinedAnalyticsPage = () => {
   const [selectedTime, setSelectedTime] = useState(null);
   const [timeOptions, setTimeOptions] = useState([]);
   const [occupancyPercent, setOccupancyPercent] = useState(0);
-
+  const [selectedDate, setSelectedDate] = useState(dayjs().format('YYYY-MM-DD'));
+  const [popularDate, setPopularDate] = useState(dayjs().format('YYYY-MM-DD'));  
   const [viewType, setViewType] = useState('outdoor');
   const [popularData, setPopularData] = useState([]);
   const [averageStay, setAverageStay] = useState(0);
+  const [averageOccupancyData, setAverageOccupancyData] = useState([]);
 
+  useEffect(() => {
+    Promise.all([
+      fetch('/popular_times_indoor.json').then(res => res.json()),
+      fetch('/popular_times_outdoor.json').then(res => res.json())
+    ]).then(([indoorData, outdoorData]) => {
+      const allDates = new Set([
+        ...Object.keys(indoorData || {}),
+        ...Object.keys(outdoorData || {})
+      ]);
+  
+      const aggregated = Array.from(allDates).map(date => {
+        const indoor = indoorData[date]
+          ? Object.values(indoorData[date]).reduce((a, b) => a + b, 0)
+          : 0;
+        const outdoor = outdoorData[date]
+          ? Object.values(outdoorData[date]).reduce((a, b) => a + b, 0)
+          : 0;
+        return { date, Indoor: indoor, Outdoor: outdoor };
+      }).sort((a, b) => new Date(a.date) - new Date(b.date));
+  
+      setAverageOccupancyData(aggregated);
+    });
+  }, []);
+  
   useEffect(() => {
     fetch('/combined_occupancy.json')
       .then(res => res.json())
       .then(json => {
-        const times = [...new Set(json.occupancy_data.map(d => d.time))];
+        const sampleDate = Object.keys(json)[0];
+        const times = [...new Set(json[sampleDate].map(d => d.time))];
         setTimeOptions(times.map(t => ({ value: t, label: t })));
         setSelectedTime({ value: times[0], label: times[0] });
-        setCombinedData(json.occupancy_data);
+        setCombinedData(json);
       });
   }, []);
+  
 
   useEffect(() => {
-    if (!selectedTime || !selectedLocation || combinedData.length === 0) return;
-
-    const filtered = combinedData.filter(d => {
+    if (!selectedTime || !selectedLocation || !combinedData || !combinedData[selectedDate]) {
+      setOccupancyPercent(0);
+      return;
+    }
+  
+    const dataForDate = combinedData[selectedDate];
+    const filtered = dataForDate.filter(d => {
       const isOutdoor = d.location_type.toLowerCase() === 'outdoor';
       const matchLocation = selectedLocation.value === 'Outdoor' ? isOutdoor : !isOutdoor;
       return matchLocation && d.time === selectedTime.value;
     });
-
+  
+    if (filtered.length === 0) {
+      setOccupancyPercent(0);
+      return;
+    }
+  
     const totalDetected = filtered.reduce((sum, d) => sum + d.vehicle_count, 0);
     const percent = (totalDetected / TOTAL_CAPACITY[selectedLocation.value]) * 100;
     setOccupancyPercent(Math.min(100, Math.round(percent)));
-  }, [selectedTime, selectedLocation, combinedData]);
+  }, [selectedTime, selectedLocation, combinedData, selectedDate]);
+  
 
   useEffect(() => {
-    const file = viewType === 'indoor' ? '/popular_times_indoor.json' : '/popular_times_outdoor.json';
+    const file = viewType === 'indoor'
+      ? '/popular_times_indoor.json'
+      : '/popular_times_outdoor.json';
+  
     fetch(file)
       .then(res => res.json())
       .then(json => {
-        const formatted = Object.entries(json).map(([hour, count]) => ({ hour, vehicles: count }));
+        const dataForDate = json[popularDate]; // Expects "YYYY-MM-DD" as key
+        if (!dataForDate) {
+          setPopularData([]);  // No data for this date
+          setAverageStay(0);
+          return;
+        }
+  
+        const formatted = Object.entries(dataForDate).map(([hour, count]) => ({
+          hour,
+          vehicles: count
+        }));
+  
         setPopularData(formatted);
-
+  
         const totalVehicles = formatted.reduce((sum, item) => sum + item.vehicles, 0);
         const activeHours = formatted.filter(item => item.vehicles > 0).length;
         const avg = totalVehicles > 0 && activeHours > 0 ? (activeHours * 1).toFixed(1) : '0';
         setAverageStay(avg);
       });
-  }, [viewType]);
+  }, [viewType, popularDate]);
+  
 
   const getBarColor = () => {
     if (occupancyPercent >= 80) return '#ff4c4c';
@@ -115,10 +170,33 @@ const CombinedAnalyticsPage = () => {
       <div className="main-content">
         <h1 className="home-title">Analytics Dashboard</h1>
 
+        <div style={{ display: 'flex', gap: '2rem', alignItems: 'flex-start', flexWrap: 'wrap' }}>
+        {/* LEFT SIDE: Occupancy + Popular */}
+        <div style={{ flex: '1 1 600px', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+        <div style={{
+          marginBottom: '3rem',
+          marginTop:'3rem',
+          padding: '2rem',
+          border: '1px solid #04075e',
+          borderRadius: '20px',
+          backgroundColor: '#0a0a0a',
+          maxWidth: '900px',
+          marginLeft: '0',
+          marginRight: '0',
+          boxShadow: '0 0 10px #04075e',
+        }}>
         {/* Single Occupancy Bar */}
         <div style={{ marginBottom: '2rem' }}>
-          <h2 style={{ marginBottom: '1rem', color: 'white' }}>Occupancy Dashboard</h2>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginBottom: '2rem' }}>
+        <div style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          marginBottom: '1.5rem',
+          flexWrap: 'wrap',
+          gap: '1rem'
+        }}>
+          <h2 style={{ color: 'white', margin: 0 }}>Occupancy By Hour</h2>
+          <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
             <Select
               options={[{ value: 'Multi', label: 'Multi' }, { value: 'Outdoor', label: 'Outdoor' }]}
               value={selectedLocation}
@@ -132,13 +210,34 @@ const CombinedAnalyticsPage = () => {
               styles={dropdownStyles}
               menuPortalTarget={document.body}
             />
+            <input
+              type="date"
+              value={selectedDate}
+              onChange={(e) => setSelectedDate(e.target.value)}
+              style={{
+                padding: '0.4rem 1rem',
+                backgroundColor: '#1e1e1e',
+                color: '#fff',
+                border: '1px solid #33ff99',
+                borderRadius: '999px',
+                fontWeight: 'bold',
+                fontSize: '0.85rem',
+                height: '32px',
+              }}
+            />
           </div>
+        </div>
 
-          <div style={{ background: '#111', padding: '1rem', borderRadius: '1rem', maxWidth: '600px', margin: '0 auto' }}>
-            <h3 style={{ color: '#00ff66' }}>Occupancy</h3>
+          <div style={{ background: '#111', padding: '2rem', borderRadius: '1rem', maxWidth: '700px', width: '100%',
+  minWidth: '700px',margin: '0 auto' }}>
             <div style={{ background: '#333', borderRadius: '1rem', height: '30px', overflow: 'hidden', position: 'relative' }}>
               <div style={{ width: `${occupancyPercent}%`, height: '100%', background: getBarColor(), transition: 'width 0.5s ease-in-out' }} />
             </div>
+            {combinedData[selectedDate] ? null : (
+              <div style={{ color: '#ff8080', textAlign: 'center', marginTop: '1rem' }}>
+                No occupancy data available for this date.
+              </div>
+            )}
             <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.5rem', fontSize: '14px', color: 'white' }}>
               <span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span>
             </div>
@@ -150,11 +249,30 @@ const CombinedAnalyticsPage = () => {
             <span style={{ color: '#ff4c4c', marginLeft: '1rem' }}>■ High (80–100%)</span>
           </div>
         </div>
+        </div>
 
+        <div style={{
+          padding: '2rem',
+          border: '1px solid #04075e',
+          borderRadius: '20px',
+          backgroundColor: '#0a0a0a',
+          maxWidth: '900px',
+          marginLeft: '0',
+          marginRight: '0',
+          boxShadow: '0 0 10px #04075e',
+        }}>
          {/* Popular Times Dashboard */}
           <div style={{ marginBottom: '2rem' }}>
-            <h2 style={{ marginBottom: '1rem', color: 'white' }}>Popular Times Dashboard</h2>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginBottom: '2rem' }}>
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginBottom: '1.5rem',
+            flexWrap: 'wrap',
+            gap: '1rem'
+          }}>
+            <h2 style={{ color: 'white', margin: 0 }}>Popular Times Dashboard</h2>
+            <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
               <Select
                 value={viewOptions.find(opt => opt.value === viewType)}
                 onChange={(selected) => setViewType(selected.value)}
@@ -162,27 +280,35 @@ const CombinedAnalyticsPage = () => {
                 styles={dropdownStyles}
                 menuPortalTarget={document.body}
               />
+              <input
+                type="date"
+                value={popularDate}
+                onChange={(e) => setPopularDate(e.target.value)}
+                style={{
+                  padding: '0.4rem 1rem',
+                  backgroundColor: '#1e1e1e',
+                  color: '#fff',
+                  border: '1px solid #33ff99',
+                  borderRadius: '999px',
+                  fontWeight: 'bold',
+                  fontSize: '0.85rem',
+                  height: '32px',
+                }}
+              />
             </div>
+          </div>
           </div>
               {/* Popular Times Chart Box */}
         <div style={{
           width: '100%',
           maxWidth: '700px',
-          minWidth: '400px',
+          minWidth: '700px',
           margin: '0 auto',
           padding: '2rem',
-          backgroundColor: '#0d0d0d',
+          backgroundColor: '#111',
           borderRadius: '12px',
-          boxShadow: '0 0 25px rgba(0, 255, 100, 0.2)',
           color: '#d1ffd6'
         }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap' }}>
-            <h3 style={{ color: '#ffffff', marginBottom: '10px' }}>Popular Times Overview</h3>
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', fontSize: '14px', color: '#99ffcc' }}>
-              <div><FaCalendarAlt className="text-green-400" /> <strong>{dayjs().format('dddd')}</strong></div>
-              <div><FaClock className="text-green-400" /> <strong>{dayjs().format('h:mm A')}</strong></div>
-            </div>
-          </div>
 
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={popularData}>
@@ -205,8 +331,84 @@ const CombinedAnalyticsPage = () => {
           </ResponsiveContainer>
 
           <div style={{ marginTop: '2rem', textAlign: 'center', color: '#ccffcc' }}>
-            People typically spend up to <strong className="text-green-400">{averageStay} hours</strong> here.
+            {popularData.length > 0 ? (
+              <>People typically spend up to <strong className="text-green-400">{averageStay} hours</strong> here.</>
+            ) : (
+              <span style={{ color: '#ff8080' }}>No data available for this date.</span>
+            )}
           </div>
+          </div>
+
+        </div>
+        </div>
+
+        {/* RIGHT SIDE: Average Occupancy Area Chart */}
+        <div style={{
+          flex: '0 0 700px',
+          minWidth: '700px',
+          height: '900px',
+          padding: '2rem',
+          border: '1px solid #04075e',
+          borderRadius: '20px',
+          backgroundColor: '#0a0a0a',
+          boxShadow: '0 0 10px #04075e',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'flex-start',
+          marginTop: '3rem',
+        }}>
+          <h3 style={{ color: '#fff', marginBottom: '1rem' }}>Average Occupancy</h3>
+          <div style={{
+            backgroundColor: '#111',
+            padding: '1rem',
+            borderRadius: '1rem',
+            flexGrow: 1,
+            display: 'flex',
+            flexDirection: 'column'
+          }}>
+            <ResponsiveContainer width="100%" height="100%">
+              <AreaChart data={averageOccupancyData}>
+                <XAxis dataKey="date" stroke="#ccc" />
+                <YAxis stroke="#ccc" />
+                <Legend />
+                <Tooltip content={({ active, payload, label }) =>
+                  active && payload ? (
+                    <div style={{
+                      background: '#000',
+                      padding: '0.5rem 1rem',
+                      borderRadius: '0.5rem',
+                      border: '1px solid #00ff99',
+                      color: '#fff'
+                    }}>
+                      <strong>{label}</strong><br />
+                      {payload.map(p => (
+                        <div key={p.dataKey} style={{ color: p.stroke }}>
+                          {p.dataKey}: {p.value}
+                        </div>
+                      ))}
+                    </div>
+                  ) : null
+                } />
+                <Area
+                  type="monotone"
+                  dataKey="Indoor"
+                  stackId="1"
+                  stroke="#33d2ff"
+                  fill="#33d2ff"
+                  fillOpacity={0.4}
+                />
+                <Area
+                  type="monotone"
+                  dataKey="Outdoor"
+                  stackId="1"
+                  stroke="#33ff88"
+                  fill="#33ff88"
+                  fillOpacity={0.4}
+                />
+              </AreaChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
         </div>
       </div>
     </div>

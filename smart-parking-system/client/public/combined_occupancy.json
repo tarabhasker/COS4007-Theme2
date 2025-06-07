@@ -1,5 +1,5 @@
 {
-  "occupancy_data": [
+  "2025-05-07": [
     {
       "location_type": "Indoor",
       "location": "4A",
@@ -966,11 +966,14 @@
       "10am": 118,
       "11am": 117,
       "12am": 108,
-      "1pm": 93,
-      "2pm": 210,
+      "1pm": 102,
+      "2pm": 216,
       "3pm": 177,
       "4pm": 188,
-      "5pm": 155
+      "5pm": 155,
+      "14pm": 7,
+      "12pm": 7,
+      "2am": 21
     },
     "outdoor": {
       "10am": 22,
@@ -982,5 +985,43 @@
       "4pm": 8,
       "5pm": 4
     }
-  }
+  },
+  "2025-06-06": [
+    {
+      "location_type": "Indoor",
+      "location": "1B",
+      "time": "2pm",
+      "vehicle_count": 7
+    }
+  ],
+  "2025-06-07": [
+    {
+      "location_type": "Indoor",
+      "location": "1B",
+      "time": "2pm",
+      "vehicle_count": 6
+    },
+    {
+      "location_type": "Indoor",
+      "location": "3B",
+      "time": "12pm",
+      "vehicle_count": 7
+    }
+  ],
+  "2025-06-10": [
+    {
+      "location_type": "Indoor",
+      "location": "2B",
+      "time": "1pm",
+      "vehicle_count": 9
+    }
+  ],
+  "2025-06-11": [
+    {
+      "location_type": "Indoor",
+      "location": "1B",
+      "time": "2am",
+      "vehicle_count": 21
+    }
+  ]
 }

@@ -80,9 +80,13 @@
   
   
   .hero-section {
-    margin-top: 15rem;
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
   }
+  
   
   .hero-section h2 {
     font-size: 2rem;
@@ -120,19 +124,18 @@
   }
   
   .features {
-    position: relative;
-    bottom: 0;
-    left: 80px;
-    width: calc(100% - 100px);
     background-color: transparent;
-    padding: 4rem 0 1rem 0; 
+    padding: 4rem 0 1rem 0;
     color: #b3ff6d;
     font-size: 0.9rem;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 2rem;
+    margin: 0 auto; /* 🔄 center horizontally */
+    width: fit-content; /* ensures the width wraps around content */
   }
+  
   
   .features .dot {
     height: 8px;
@@ -295,6 +298,34 @@
   color: black;
   transform: scale(1.05);
   box-shadow: 0 4px 12px rgba(102, 255, 153, 0.4);
+}
+
+.file-input {
+  padding: 0.75rem;
+  background-color: black;
+  border: 1px solid #33ff99;
+  border-radius: 6px;
+  color: white;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.file-input::file-selector-button {
+  background-color: #33ff99;
+  color: black;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-right: 1rem;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.file-input::file-selector-button:hover {
+  background-color: #28e67a;
 }
 
   

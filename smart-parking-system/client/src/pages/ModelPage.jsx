@@ -2,20 +2,15 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './HomePage.css';
 import {
-  FaThLarge,
-  FaCar,
-  FaChartBar,
   FaArrowUp,
   FaHandPointer,
   FaArrowLeft,
 } from 'react-icons/fa';
-import { FaCalendarAlt } from 'react-icons/fa';
-import Sidebar from './Sidebar'; 
-
+import Sidebar from './Sidebar';
 
 const locations = [
-  "Swinburne Multi Storey - Level 1A", "Swinburne Multi Storey - Level 1B", "Swinburne Multi Storey - Level 2A", "Swinburne Multi Storey - Level 2B", "Swinburne Multi Storey - Level 3A", "Swinburne Multi Storey - Level 3B",
-  "Swinburne Multi Storey - Level 4A", "Swinburne Multi Storey - Level 4B", "Swinburne Multi Storey - Level 5A", "Swinburne Multi Storey - Level 5B", "Swinburne Multi Storey - Level 6A", "Swinburne Multi Storey - Level 6B", "Swinburne Outdoor"
+  "Indoor - 1A", "Indoor - 1B", "Indoor - 2A", "Indoor - 2B", "Indoor - 3A", "Indoor - 3B",
+  "Indoor - 4A", "Indoor - 4B", "Indoor - 5A", "Indoor - 5B", "Indoor - 6A", "Indoor - 6B", "Outdoor"
 ];
 
 const times = Array.from({ length: 24 }, (_, i) =>
@@ -27,13 +22,14 @@ const ModelPage = () => {
   const [location, setLocation] = useState('');
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
+  const [selectedImageFile, setSelectedImageFile] = useState(null);
+  const [gradioConfirmed, setGradioConfirmed] = useState(false);
   const [showGradio, setShowGradio] = useState(false);
   const gradioRef = useRef(null);
   const navigate = useNavigate();
-  const [gradioConfirmed, setGradioConfirmed] = useState(false);
 
   useEffect(() => {
-    if (selectedModel && location && date && time) {
+    if (selectedModel && location && date && time && selectedImageFile) {
       setShowGradio(true);
       setTimeout(() => {
         gradioRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -41,14 +37,48 @@ const ModelPage = () => {
     } else {
       setShowGradio(false);
     }
-  }, [selectedModel, location, date, time]);
+  }, [selectedModel, location, date, time, selectedImageFile]);
+  
+
+  const handleImageChange = (e) => {
+    setSelectedImageFile(e.target.files[0]);
+  };
+
+  const handleAddToDatabase = async () => {
+    if (!selectedImageFile) return alert("Please upload an image.");
+
+    const formData = new FormData();
+    formData.append("image", selectedImageFile);
+    formData.append("location", location);
+    formData.append("date", date);
+    formData.append("time", time);
+
+    try {
+      const response = await fetch("http://localhost:5000/predict", {
+        method: "POST",
+        body: formData,
+      });
+      const result = await response.json();
+
+      if (result.success) {
+        alert(`✅ Data added to database! Vehicle count: ${result.count}`);
+      } else {
+        alert("❌ Prediction failed.");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("❌ Server error.");
+    }
+  };
 
   return (
     <div className="homepage">
       {/* Sidebar */}
-      <Sidebar /> 
+      <Sidebar />
+
       {/* Main Content */}
       <div className="main-content">
+        {/* Header */}
         <div className="header">
           <div style={{ display: 'flex', alignItems: 'baseline', gap: '1rem' }}>
             <FaArrowLeft
@@ -58,20 +88,10 @@ const ModelPage = () => {
             />
             <h1 className="home-title">Model</h1>
           </div>
-          <div className="stats">
-            <div className="stat">
-              <h2>1,050 <span className="stat-icon"><FaArrowUp /></span></h2>
-              <p>Image Uploads</p>
-            </div>
-            <div className="stat">
-              <h2>34 <span className="stat-icon"><FaHandPointer /></span></h2>
-              <p>New requests</p>
-            </div>
-          </div>
         </div>
 
+        {/* Form Section */}
         <div className="hero-section">
-
           {/* Model Selector */}
           <div className="model-buttons">
             <button
@@ -88,7 +108,7 @@ const ModelPage = () => {
             </button>
           </div>
 
-          {/* Form Fields */}
+          {/* Location */}
           <div className="form-field">
             <label>Location</label>
             <select value={location} onChange={(e) => setLocation(e.target.value)}>
@@ -99,17 +119,18 @@ const ModelPage = () => {
             </select>
           </div>
 
+          {/* Date */}
           <div className="form-field">
             <label>Date</label>
             <input
-                type="date"
-                className="date-input"
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
+              type="date"
+              className="date-input"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
             />
-            </div>
+          </div>
 
-
+          {/* Time */}
           <div className="form-field">
             <label>Time</label>
             <select value={time} onChange={(e) => setTime(e.target.value)}>
@@ -119,53 +140,66 @@ const ModelPage = () => {
               ))}
             </select>
           </div>
+
+          {/* Image Upload */}
+          <div className="form-field">
+            <label>Upload Image</label>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleImageChange}
+              className="file-input"
+            />
+
+            {/* Preview Image */}
+            {selectedImageFile && (
+              <div style={{ marginTop: '0.2rem' }}>
+                <img
+                  src={URL.createObjectURL(selectedImageFile)}
+                  alt="Preview"
+                  style={{
+                    width: '100%',
+                    minWidth: '400px',
+                    maxWidth: '400px',
+                    maxHeight: '200px',
+                    borderRadius: '10px',
+                    border: '1px solid #111',
+                    objectFit: 'cover',
+                  }}
+                />
+              </div>
+            )}
+          </div>
+
         </div>
 
+        {/* Gradio Section */}
         {showGradio && (
-  <div ref={gradioRef} className="gradio-section">
-    <iframe
-      src="https://9113554a56827dc8c5.gradio.live"
-      title="YOLOv8 Gradio Interface"
-      width="100%"
-      height="650"
-      style={{ border: 'none', borderRadius: '12px' }}
-    />
+          <div ref={gradioRef} className="gradio-section">
+            <p style={{ fontStyle: 'italic', color: '#b3ff6d', marginBottom: '1rem' }}>
+              * Upload the same image to test the model out before adding to database
+            </p>
+            <iframe
+              src="https://9113554a56827dc8c5.gradio.live"
+              title="YOLOv8 Gradio Interface"
+              width="100%"
+              height="650"
+              style={{ border: 'none', borderRadius: '12px' }}
+            />
+            <div className="text-center mt-4">
+              {!gradioConfirmed ? (
+                <button onClick={() => setGradioConfirmed(true)} className="btn model-action-btn">
+                  Confirm Output
+                </button>
+              ) : (
+                <button onClick={handleAddToDatabase} className="btn model-action-btn">
+                  Add to Database
+                </button>
+              )}
+            </div>
+          </div>
+        )}
 
-    {/* Button container UNDER the Gradio interface */}
-    <div className="text-center mt-4">
-  {!gradioConfirmed ? (
-    <button
-      onClick={() => setGradioConfirmed(true)}
-      className="btn model-action-btn"
-    >
-      Confirm Output
-    </button>
-  ) : (
-    <button
-      onClick={() => alert('Data added to database!')}
-      className="btn model-action-btn"
-    >
-      Add to Database
-    </button>
-  )}
-</div>
-  </div>
-)}
-
-
-
-
-
-        {/* Footer Features */}
-        <div className="features">
-          <span>State-of-the-art YOLO Model</span>
-          <span className="dot" />
-          <span>Comprehensive Dataset</span>
-          <span className="dot" />
-          <span>High detection accuracy</span>
-          <span className="dot" />
-          <span>Scalable and generalizable</span>
-        </div>
       </div>
     </div>
   );
