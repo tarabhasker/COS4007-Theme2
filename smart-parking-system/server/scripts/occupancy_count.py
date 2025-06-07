@@ -3,7 +3,7 @@ import json
 from ultralytics import YOLO
 
 # === CONFIG ===
-MODEL_PATH = '../models/best3.pt'
+MODEL_PATH = '../models/final_best-tara.pt'
 DATASET_ROOT = '../../Data'  # Contains both 'Indoor' and 'outdoor'
 OUTPUT_JSON = '../../client/public/combined_occupancy.json'
 # ==============

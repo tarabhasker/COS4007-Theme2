@@ -89,19 +89,41 @@ const CombinedAnalyticsPage = () => {
   }, [selectedTime, selectedLocation, combinedData]);
 
   useEffect(() => {
-    const file = viewType === 'indoor' ? '/popular_times_indoor.json' : '/popular_times_outdoor.json';
-    fetch(file)
-      .then(res => res.json())
-      .then(json => {
-        const formatted = Object.entries(json).map(([hour, count]) => ({ hour, vehicles: count }));
-        setPopularData(formatted);
+    if (!combinedData.length) return;
 
-        const totalVehicles = formatted.reduce((sum, item) => sum + item.vehicles, 0);
-        const activeHours = formatted.filter(item => item.vehicles > 0).length;
-        const avg = totalVehicles > 0 && activeHours > 0 ? (activeHours * 1).toFixed(1) : '0';
-        setAverageStay(avg);
-      });
-  }, [viewType]);
+    const isOutdoor = viewType === 'outdoor';
+
+    // Group by hour
+    const hourlyMap = {};
+
+    combinedData.forEach(d => {
+      const matchLocation = d.location_type.toLowerCase() === (isOutdoor ? 'outdoor' : 'indoor');
+      if (!matchLocation) return;
+
+      const hour = d.time.toLowerCase();  // e.g. '10am', '2pm'
+      if (!hourlyMap[hour]) hourlyMap[hour] = 0;
+      hourlyMap[hour] += d.vehicle_count;
+    });
+
+    const formatted = Object.entries(hourlyMap).map(([hour, vehicles]) => ({
+      hour,
+      vehicles
+    })).sort((a, b) => {
+      const convert = (t) => {
+        const [h, period] = t.replace(':00', '').toLowerCase().split(/(am|pm)/);
+        const hour = parseInt(h);
+        return period === 'pm' && hour !== 12 ? hour + 12 : hour === 12 ? 12 : hour;
+      };
+      return convert(a.hour) - convert(b.hour);
+    });
+
+    setPopularData(formatted);
+
+    const total = formatted.reduce((sum, item) => sum + item.vehicles, 0);
+    const activeHours = formatted.filter(item => item.vehicles > 0).length;
+    const avg = total > 0 && activeHours > 0 ? (activeHours * 1).toFixed(1) : '0';
+    setAverageStay(avg);
+  }, [viewType, combinedData]);
 
   const getBarColor = () => {
     if (occupancyPercent >= 80) return '#ff4c4c';

@@ -4,13 +4,13 @@
       "location_type": "Indoor",
       "location": "4A",
       "time": "10am",
-      "vehicle_count": 15
+      "vehicle_count": 14
     },
     {
       "location_type": "Indoor",
       "location": "4A",
       "time": "10am",
-      "vehicle_count": 5
+      "vehicle_count": 6
     },
     {
       "location_type": "Indoor",
@@ -22,7 +22,7 @@
       "location_type": "Indoor",
       "location": "4B",
       "time": "10am",
-      "vehicle_count": 19
+      "vehicle_count": 14
     },
     {
       "location_type": "Indoor",
@@ -33,378 +33,378 @@
     {
       "location_type": "Indoor",
       "location": "4B",
-      "time": "10am",
-      "vehicle_count": 5
-    },
-    {
-      "location_type": "Indoor",
-      "location": "5A",
-      "time": "10am",
-      "vehicle_count": 16
-    },
-    {
-      "location_type": "Indoor",
-      "location": "5A",
-      "time": "10am",
-      "vehicle_count": 5
-    },
-    {
-      "location_type": "Indoor",
-      "location": "5A",
-      "time": "10am",
-      "vehicle_count": 4
-    },
-    {
-      "location_type": "Indoor",
-      "location": "5B",
-      "time": "10am",
-      "vehicle_count": 12
-    },
-    {
-      "location_type": "Indoor",
-      "location": "5B",
-      "time": "10am",
-      "vehicle_count": 5
-    },
-    {
-      "location_type": "Indoor",
-      "location": "5B",
-      "time": "10am",
-      "vehicle_count": 3
-    },
-    {
-      "location_type": "Indoor",
-      "location": "6A",
       "time": "10am",
       "vehicle_count": 7
     },
     {
       "location_type": "Indoor",
-      "location": "6A",
-      "time": "10am",
-      "vehicle_count": 3
-    },
-    {
-      "location_type": "Indoor",
-      "location": "6A",
-      "time": "10am",
-      "vehicle_count": 2
-    },
-    {
-      "location_type": "Indoor",
-      "location": "6B",
-      "time": "10am",
-      "vehicle_count": 0
-    },
-    {
-      "location_type": "Indoor",
-      "location": "6B",
-      "time": "10am",
-      "vehicle_count": 1
-    },
-    {
-      "location_type": "Indoor",
-      "location": "6B",
-      "time": "10am",
-      "vehicle_count": 1
-    },
-    {
-      "location_type": "Indoor",
-      "location": "4A",
-      "time": "11am",
-      "vehicle_count": 12
-    },
-    {
-      "location_type": "Indoor",
-      "location": "4A",
-      "time": "11am",
-      "vehicle_count": 5
-    },
-    {
-      "location_type": "Indoor",
-      "location": "4A",
-      "time": "11am",
-      "vehicle_count": 6
-    },
-    {
-      "location_type": "Indoor",
-      "location": "4B",
-      "time": "11am",
-      "vehicle_count": 16
-    },
-    {
-      "location_type": "Indoor",
-      "location": "4B",
-      "time": "11am",
-      "vehicle_count": 11
-    },
-    {
-      "location_type": "Indoor",
-      "location": "4B",
-      "time": "11am",
-      "vehicle_count": 4
-    },
-    {
-      "location_type": "Indoor",
       "location": "5A",
-      "time": "11am",
-      "vehicle_count": 11
-    },
-    {
-      "location_type": "Indoor",
-      "location": "5A",
-      "time": "11am",
-      "vehicle_count": 4
-    },
-    {
-      "location_type": "Indoor",
-      "location": "5A",
-      "time": "11am",
-      "vehicle_count": 2
-    },
-    {
-      "location_type": "Indoor",
-      "location": "5B",
-      "time": "11am",
-      "vehicle_count": 12
-    },
-    {
-      "location_type": "Indoor",
-      "location": "5B",
-      "time": "11am",
-      "vehicle_count": 5
-    },
-    {
-      "location_type": "Indoor",
-      "location": "5B",
-      "time": "11am",
-      "vehicle_count": 2
-    },
-    {
-      "location_type": "Indoor",
-      "location": "6A",
-      "time": "11am",
-      "vehicle_count": 16
-    },
-    {
-      "location_type": "Indoor",
-      "location": "6A",
-      "time": "11am",
-      "vehicle_count": 4
-    },
-    {
-      "location_type": "Indoor",
-      "location": "6A",
-      "time": "11am",
-      "vehicle_count": 1
-    },
-    {
-      "location_type": "Indoor",
-      "location": "6B",
-      "time": "11am",
-      "vehicle_count": 3
-    },
-    {
-      "location_type": "Indoor",
-      "location": "6B",
-      "time": "11am",
-      "vehicle_count": 3
-    },
-    {
-      "location_type": "Indoor",
-      "location": "6B",
-      "time": "11am",
-      "vehicle_count": 0
-    },
-    {
-      "location_type": "Indoor",
-      "location": "4A",
-      "time": "12am",
-      "vehicle_count": 12
-    },
-    {
-      "location_type": "Indoor",
-      "location": "4A",
-      "time": "12am",
-      "vehicle_count": 2
-    },
-    {
-      "location_type": "Indoor",
-      "location": "4A",
-      "time": "12am",
-      "vehicle_count": 9
-    },
-    {
-      "location_type": "Indoor",
-      "location": "4B",
-      "time": "12am",
+      "time": "10am",
       "vehicle_count": 13
     },
     {
       "location_type": "Indoor",
-      "location": "4B",
-      "time": "12am",
-      "vehicle_count": 6
-    },
-    {
-      "location_type": "Indoor",
-      "location": "4B",
-      "time": "12am",
-      "vehicle_count": 6
+      "location": "5A",
+      "time": "10am",
+      "vehicle_count": 8
     },
     {
       "location_type": "Indoor",
       "location": "5A",
-      "time": "12am",
+      "time": "10am",
+      "vehicle_count": 5
+    },
+    {
+      "location_type": "Indoor",
+      "location": "5B",
+      "time": "10am",
+      "vehicle_count": 14
+    },
+    {
+      "location_type": "Indoor",
+      "location": "5B",
+      "time": "10am",
       "vehicle_count": 7
     },
     {
       "location_type": "Indoor",
-      "location": "5A",
-      "time": "12am",
-      "vehicle_count": 5
-    },
-    {
-      "location_type": "Indoor",
-      "location": "5A",
-      "time": "12am",
-      "vehicle_count": 4
-    },
-    {
-      "location_type": "Indoor",
       "location": "5B",
-      "time": "12am",
-      "vehicle_count": 10
-    },
-    {
-      "location_type": "Indoor",
-      "location": "5B",
-      "time": "12am",
-      "vehicle_count": 5
-    },
-    {
-      "location_type": "Indoor",
-      "location": "5B",
-      "time": "12am",
+      "time": "10am",
       "vehicle_count": 4
     },
     {
       "location_type": "Indoor",
       "location": "6A",
-      "time": "12am",
-      "vehicle_count": 10
-    },
-    {
-      "location_type": "Indoor",
-      "location": "6A",
-      "time": "12am",
-      "vehicle_count": 4
-    },
-    {
-      "location_type": "Indoor",
-      "location": "6A",
-      "time": "12am",
-      "vehicle_count": 2
-    },
-    {
-      "location_type": "Indoor",
-      "location": "6B",
-      "time": "12am",
-      "vehicle_count": 4
-    },
-    {
-      "location_type": "Indoor",
-      "location": "6B",
-      "time": "12am",
-      "vehicle_count": 3
-    },
-    {
-      "location_type": "Indoor",
-      "location": "6B",
-      "time": "12am",
-      "vehicle_count": 2
-    },
-    {
-      "location_type": "Indoor",
-      "location": "4A",
-      "time": "1pm",
-      "vehicle_count": 16
-    },
-    {
-      "location_type": "Indoor",
-      "location": "4A",
-      "time": "1pm",
-      "vehicle_count": 4
-    },
-    {
-      "location_type": "Indoor",
-      "location": "4A",
-      "time": "1pm",
-      "vehicle_count": 6
-    },
-    {
-      "location_type": "Indoor",
-      "location": "4B",
-      "time": "1pm",
-      "vehicle_count": 12
-    },
-    {
-      "location_type": "Indoor",
-      "location": "4B",
-      "time": "1pm",
-      "vehicle_count": 5
-    },
-    {
-      "location_type": "Indoor",
-      "location": "4B",
-      "time": "1pm",
-      "vehicle_count": 1
-    },
-    {
-      "location_type": "Indoor",
-      "location": "5A",
-      "time": "1pm",
-      "vehicle_count": 9
-    },
-    {
-      "location_type": "Indoor",
-      "location": "5A",
-      "time": "1pm",
-      "vehicle_count": 2
-    },
-    {
-      "location_type": "Indoor",
-      "location": "5B",
-      "time": "1pm",
-      "vehicle_count": 6
-    },
-    {
-      "location_type": "Indoor",
-      "location": "5B",
-      "time": "1pm",
-      "vehicle_count": 6
-    },
-    {
-      "location_type": "Indoor",
-      "location": "5B",
-      "time": "1pm",
-      "vehicle_count": 3
-    },
-    {
-      "location_type": "Indoor",
-      "location": "5B",
-      "time": "1pm",
-      "vehicle_count": 4
-    },
-    {
-      "location_type": "Indoor",
-      "location": "6A",
-      "time": "1pm",
+      "time": "10am",
       "vehicle_count": 8
     },
     {
       "location_type": "Indoor",
       "location": "6A",
+      "time": "10am",
+      "vehicle_count": 6
+    },
+    {
+      "location_type": "Indoor",
+      "location": "6A",
+      "time": "10am",
+      "vehicle_count": 2
+    },
+    {
+      "location_type": "Indoor",
+      "location": "6B",
+      "time": "10am",
+      "vehicle_count": 0
+    },
+    {
+      "location_type": "Indoor",
+      "location": "6B",
+      "time": "10am",
+      "vehicle_count": 0
+    },
+    {
+      "location_type": "Indoor",
+      "location": "6B",
+      "time": "10am",
+      "vehicle_count": 0
+    },
+    {
+      "location_type": "Indoor",
+      "location": "4A",
+      "time": "11am",
+      "vehicle_count": 12
+    },
+    {
+      "location_type": "Indoor",
+      "location": "4A",
+      "time": "11am",
+      "vehicle_count": 6
+    },
+    {
+      "location_type": "Indoor",
+      "location": "4A",
+      "time": "11am",
+      "vehicle_count": 9
+    },
+    {
+      "location_type": "Indoor",
+      "location": "4B",
+      "time": "11am",
+      "vehicle_count": 12
+    },
+    {
+      "location_type": "Indoor",
+      "location": "4B",
+      "time": "11am",
+      "vehicle_count": 9
+    },
+    {
+      "location_type": "Indoor",
+      "location": "4B",
+      "time": "11am",
+      "vehicle_count": 7
+    },
+    {
+      "location_type": "Indoor",
+      "location": "5A",
+      "time": "11am",
+      "vehicle_count": 12
+    },
+    {
+      "location_type": "Indoor",
+      "location": "5A",
+      "time": "11am",
+      "vehicle_count": 8
+    },
+    {
+      "location_type": "Indoor",
+      "location": "5A",
+      "time": "11am",
+      "vehicle_count": 5
+    },
+    {
+      "location_type": "Indoor",
+      "location": "5B",
+      "time": "11am",
+      "vehicle_count": 11
+    },
+    {
+      "location_type": "Indoor",
+      "location": "5B",
+      "time": "11am",
+      "vehicle_count": 9
+    },
+    {
+      "location_type": "Indoor",
+      "location": "5B",
+      "time": "11am",
+      "vehicle_count": 7
+    },
+    {
+      "location_type": "Indoor",
+      "location": "6A",
+      "time": "11am",
+      "vehicle_count": 12
+    },
+    {
+      "location_type": "Indoor",
+      "location": "6A",
+      "time": "11am",
+      "vehicle_count": 6
+    },
+    {
+      "location_type": "Indoor",
+      "location": "6A",
+      "time": "11am",
+      "vehicle_count": 4
+    },
+    {
+      "location_type": "Indoor",
+      "location": "6B",
+      "time": "11am",
+      "vehicle_count": 3
+    },
+    {
+      "location_type": "Indoor",
+      "location": "6B",
+      "time": "11am",
+      "vehicle_count": 6
+    },
+    {
+      "location_type": "Indoor",
+      "location": "6B",
+      "time": "11am",
+      "vehicle_count": 1
+    },
+    {
+      "location_type": "Indoor",
+      "location": "4A",
+      "time": "12am",
+      "vehicle_count": 8
+    },
+    {
+      "location_type": "Indoor",
+      "location": "4A",
+      "time": "12am",
+      "vehicle_count": 6
+    },
+    {
+      "location_type": "Indoor",
+      "location": "4A",
+      "time": "12am",
+      "vehicle_count": 7
+    },
+    {
+      "location_type": "Indoor",
+      "location": "4B",
+      "time": "12am",
+      "vehicle_count": 9
+    },
+    {
+      "location_type": "Indoor",
+      "location": "4B",
+      "time": "12am",
+      "vehicle_count": 5
+    },
+    {
+      "location_type": "Indoor",
+      "location": "4B",
+      "time": "12am",
+      "vehicle_count": 4
+    },
+    {
+      "location_type": "Indoor",
+      "location": "5A",
+      "time": "12am",
+      "vehicle_count": 7
+    },
+    {
+      "location_type": "Indoor",
+      "location": "5A",
+      "time": "12am",
+      "vehicle_count": 7
+    },
+    {
+      "location_type": "Indoor",
+      "location": "5A",
+      "time": "12am",
+      "vehicle_count": 7
+    },
+    {
+      "location_type": "Indoor",
+      "location": "5B",
+      "time": "12am",
+      "vehicle_count": 11
+    },
+    {
+      "location_type": "Indoor",
+      "location": "5B",
+      "time": "12am",
+      "vehicle_count": 8
+    },
+    {
+      "location_type": "Indoor",
+      "location": "5B",
+      "time": "12am",
+      "vehicle_count": 4
+    },
+    {
+      "location_type": "Indoor",
+      "location": "6A",
+      "time": "12am",
+      "vehicle_count": 11
+    },
+    {
+      "location_type": "Indoor",
+      "location": "6A",
+      "time": "12am",
+      "vehicle_count": 5
+    },
+    {
+      "location_type": "Indoor",
+      "location": "6A",
+      "time": "12am",
+      "vehicle_count": 3
+    },
+    {
+      "location_type": "Indoor",
+      "location": "6B",
+      "time": "12am",
+      "vehicle_count": 2
+    },
+    {
+      "location_type": "Indoor",
+      "location": "6B",
+      "time": "12am",
+      "vehicle_count": 7
+    },
+    {
+      "location_type": "Indoor",
+      "location": "6B",
+      "time": "12am",
+      "vehicle_count": 0
+    },
+    {
+      "location_type": "Indoor",
+      "location": "4A",
+      "time": "1pm",
+      "vehicle_count": 12
+    },
+    {
+      "location_type": "Indoor",
+      "location": "4A",
+      "time": "1pm",
+      "vehicle_count": 5
+    },
+    {
+      "location_type": "Indoor",
+      "location": "4A",
+      "time": "1pm",
+      "vehicle_count": 5
+    },
+    {
+      "location_type": "Indoor",
+      "location": "4B",
+      "time": "1pm",
+      "vehicle_count": 8
+    },
+    {
+      "location_type": "Indoor",
+      "location": "4B",
+      "time": "1pm",
+      "vehicle_count": 5
+    },
+    {
+      "location_type": "Indoor",
+      "location": "4B",
+      "time": "1pm",
+      "vehicle_count": 2
+    },
+    {
+      "location_type": "Indoor",
+      "location": "5A",
+      "time": "1pm",
+      "vehicle_count": 7
+    },
+    {
+      "location_type": "Indoor",
+      "location": "5A",
+      "time": "1pm",
+      "vehicle_count": 5
+    },
+    {
+      "location_type": "Indoor",
+      "location": "5B",
+      "time": "1pm",
+      "vehicle_count": 5
+    },
+    {
+      "location_type": "Indoor",
+      "location": "5B",
+      "time": "1pm",
+      "vehicle_count": 7
+    },
+    {
+      "location_type": "Indoor",
+      "location": "5B",
+      "time": "1pm",
+      "vehicle_count": 5
+    },
+    {
+      "location_type": "Indoor",
+      "location": "5B",
+      "time": "1pm",
+      "vehicle_count": 4
+    },
+    {
+      "location_type": "Indoor",
+      "location": "6A",
+      "time": "1pm",
+      "vehicle_count": 6
+    },
+    {
+      "location_type": "Indoor",
+      "location": "6A",
       "time": "1pm",
       "vehicle_count": 3
     },
@@ -424,49 +424,55 @@
       "location_type": "Indoor",
       "location": "6B",
       "time": "1pm",
-      "vehicle_count": 3
+      "vehicle_count": 2
     },
     {
       "location_type": "Indoor",
       "location": "6B",
       "time": "1pm",
-      "vehicle_count": 1
+      "vehicle_count": 0
     },
     {
       "location_type": "Indoor",
       "location": "1B",
       "time": "2pm",
-      "vehicle_count": 11
+      "vehicle_count": 9
     },
     {
       "location_type": "Indoor",
       "location": "1B",
       "time": "2pm",
-      "vehicle_count": 26
+      "vehicle_count": 13
     },
     {
       "location_type": "Indoor",
       "location": "1B",
       "time": "2pm",
-      "vehicle_count": 27
+      "vehicle_count": 16
     },
     {
       "location_type": "Indoor",
       "location": "2B",
       "time": "2pm",
-      "vehicle_count": 12
+      "vehicle_count": 8
     },
     {
       "location_type": "Indoor",
       "location": "2B",
       "time": "2pm",
-      "vehicle_count": 18
+      "vehicle_count": 13
     },
     {
       "location_type": "Indoor",
       "location": "2B",
       "time": "2pm",
-      "vehicle_count": 21
+      "vehicle_count": 13
+    },
+    {
+      "location_type": "Indoor",
+      "location": "3B",
+      "time": "2pm",
+      "vehicle_count": 9
     },
     {
       "location_type": "Indoor",
@@ -478,13 +484,7 @@
       "location_type": "Indoor",
       "location": "3B",
       "time": "2pm",
-      "vehicle_count": 13
-    },
-    {
-      "location_type": "Indoor",
-      "location": "3B",
-      "time": "2pm",
-      "vehicle_count": 18
+      "vehicle_count": 14
     },
     {
       "location_type": "Indoor",
@@ -496,13 +496,13 @@
       "location_type": "Indoor",
       "location": "4B",
       "time": "2pm",
-      "vehicle_count": 13
+      "vehicle_count": 8
     },
     {
       "location_type": "Indoor",
       "location": "4B",
       "time": "2pm",
-      "vehicle_count": 9
+      "vehicle_count": 8
     },
     {
       "location_type": "Indoor",
@@ -514,19 +514,19 @@
       "location_type": "Indoor",
       "location": "5B",
       "time": "2pm",
-      "vehicle_count": 9
+      "vehicle_count": 4
     },
     {
       "location_type": "Indoor",
       "location": "5B",
       "time": "2pm",
-      "vehicle_count": 9
+      "vehicle_count": 8
     },
     {
       "location_type": "Indoor",
       "location": "6B",
       "time": "2pm",
-      "vehicle_count": 3
+      "vehicle_count": 2
     },
     {
       "location_type": "Indoor",
@@ -538,13 +538,13 @@
       "location_type": "Indoor",
       "location": "1B",
       "time": "3pm",
-      "vehicle_count": 12
+      "vehicle_count": 7
     },
     {
       "location_type": "Indoor",
       "location": "1B",
       "time": "3pm",
-      "vehicle_count": 14
+      "vehicle_count": 8
     },
     {
       "location_type": "Indoor",
@@ -556,49 +556,55 @@
       "location_type": "Indoor",
       "location": "2B",
       "time": "3pm",
-      "vehicle_count": 15
-    },
-    {
-      "location_type": "Indoor",
-      "location": "2B",
-      "time": "3pm",
-      "vehicle_count": 17
-    },
-    {
-      "location_type": "Indoor",
-      "location": "3B",
-      "time": "3pm",
-      "vehicle_count": 12
-    },
-    {
-      "location_type": "Indoor",
-      "location": "3B",
-      "time": "3pm",
-      "vehicle_count": 12
-    },
-    {
-      "location_type": "Indoor",
-      "location": "3B",
-      "time": "3pm",
-      "vehicle_count": 12
-    },
-    {
-      "location_type": "Indoor",
-      "location": "4B",
-      "time": "3pm",
       "vehicle_count": 9
     },
     {
       "location_type": "Indoor",
-      "location": "4B",
-      "time": "3pm",
-      "vehicle_count": 18
-    },
-    {
-      "location_type": "Indoor",
-      "location": "4B",
+      "location": "2B",
       "time": "3pm",
       "vehicle_count": 10
+    },
+    {
+      "location_type": "Indoor",
+      "location": "3B",
+      "time": "3pm",
+      "vehicle_count": 10
+    },
+    {
+      "location_type": "Indoor",
+      "location": "3B",
+      "time": "3pm",
+      "vehicle_count": 9
+    },
+    {
+      "location_type": "Indoor",
+      "location": "3B",
+      "time": "3pm",
+      "vehicle_count": 9
+    },
+    {
+      "location_type": "Indoor",
+      "location": "4B",
+      "time": "3pm",
+      "vehicle_count": 7
+    },
+    {
+      "location_type": "Indoor",
+      "location": "4B",
+      "time": "3pm",
+      "vehicle_count": 8
+    },
+    {
+      "location_type": "Indoor",
+      "location": "4B",
+      "time": "3pm",
+      "vehicle_count": 9
+    },
+    {
+      "location_type": "Indoor",
+      "location": "5B",
+      "time": "3pm",
+      "vehicle_count": 4
     },
     {
       "location_type": "Indoor",
@@ -614,373 +620,367 @@
     },
     {
       "location_type": "Indoor",
-      "location": "5B",
+      "location": "6B",
       "time": "3pm",
+      "vehicle_count": 2
+    },
+    {
+      "location_type": "Indoor",
+      "location": "1B",
+      "time": "4pm",
+      "vehicle_count": 10
+    },
+    {
+      "location_type": "Indoor",
+      "location": "1B",
+      "time": "4pm",
+      "vehicle_count": 13
+    },
+    {
+      "location_type": "Indoor",
+      "location": "1B",
+      "time": "4pm",
+      "vehicle_count": 12
+    },
+    {
+      "location_type": "Indoor",
+      "location": "2B",
+      "time": "4pm",
+      "vehicle_count": 7
+    },
+    {
+      "location_type": "Indoor",
+      "location": "2B",
+      "time": "4pm",
+      "vehicle_count": 10
+    },
+    {
+      "location_type": "Indoor",
+      "location": "2B",
+      "time": "4pm",
+      "vehicle_count": 13
+    },
+    {
+      "location_type": "Indoor",
+      "location": "3B",
+      "time": "4pm",
+      "vehicle_count": 9
+    },
+    {
+      "location_type": "Indoor",
+      "location": "3B",
+      "time": "4pm",
+      "vehicle_count": 7
+    },
+    {
+      "location_type": "Indoor",
+      "location": "3B",
+      "time": "4pm",
+      "vehicle_count": 10
+    },
+    {
+      "location_type": "Indoor",
+      "location": "4B",
+      "time": "4pm",
+      "vehicle_count": 8
+    },
+    {
+      "location_type": "Indoor",
+      "location": "4B",
+      "time": "4pm",
+      "vehicle_count": 4
+    },
+    {
+      "location_type": "Indoor",
+      "location": "4B",
+      "time": "4pm",
+      "vehicle_count": 6
+    },
+    {
+      "location_type": "Indoor",
+      "location": "5B",
+      "time": "4pm",
+      "vehicle_count": 5
+    },
+    {
+      "location_type": "Indoor",
+      "location": "5B",
+      "time": "4pm",
+      "vehicle_count": 7
+    },
+    {
+      "location_type": "Indoor",
+      "location": "5B",
+      "time": "4pm",
+      "vehicle_count": 8
+    },
+    {
+      "location_type": "Indoor",
+      "location": "6B",
+      "time": "4pm",
+      "vehicle_count": 2
+    },
+    {
+      "location_type": "Indoor",
+      "location": "1B",
+      "time": "5pm",
+      "vehicle_count": 8
+    },
+    {
+      "location_type": "Indoor",
+      "location": "1B",
+      "time": "5pm",
       "vehicle_count": 11
     },
     {
       "location_type": "Indoor",
-      "location": "6B",
-      "time": "3pm",
-      "vehicle_count": 3
+      "location": "1B",
+      "time": "5pm",
+      "vehicle_count": 9
     },
     {
       "location_type": "Indoor",
-      "location": "1B",
-      "time": "4pm",
-      "vehicle_count": 14
+      "location": "2B",
+      "time": "5pm",
+      "vehicle_count": 8
     },
     {
       "location_type": "Indoor",
-      "location": "1B",
-      "time": "4pm",
-      "vehicle_count": 22
+      "location": "2B",
+      "time": "5pm",
+      "vehicle_count": 4
     },
     {
       "location_type": "Indoor",
-      "location": "1B",
-      "time": "4pm",
+      "location": "2B",
+      "time": "5pm",
       "vehicle_count": 13
     },
     {
       "location_type": "Indoor",
-      "location": "2B",
-      "time": "4pm",
-      "vehicle_count": 10
+      "location": "3B",
+      "time": "5pm",
+      "vehicle_count": 8
     },
     {
       "location_type": "Indoor",
-      "location": "2B",
-      "time": "4pm",
+      "location": "3B",
+      "time": "5pm",
+      "vehicle_count": 6
+    },
+    {
+      "location_type": "Indoor",
+      "location": "3B",
+      "time": "5pm",
+      "vehicle_count": 7
+    },
+    {
+      "location_type": "Indoor",
+      "location": "4B",
+      "time": "5pm",
+      "vehicle_count": 7
+    },
+    {
+      "location_type": "Indoor",
+      "location": "4B",
+      "time": "5pm",
+      "vehicle_count": 4
+    },
+    {
+      "location_type": "Indoor",
+      "location": "4B",
+      "time": "5pm",
+      "vehicle_count": 3
+    },
+    {
+      "location_type": "Indoor",
+      "location": "5B",
+      "time": "5pm",
+      "vehicle_count": 4
+    },
+    {
+      "location_type": "Indoor",
+      "location": "5B",
+      "time": "5pm",
+      "vehicle_count": 4
+    },
+    {
+      "location_type": "Indoor",
+      "location": "5B",
+      "time": "5pm",
+      "vehicle_count": 7
+    },
+    {
+      "location_type": "Indoor",
+      "location": "6B",
+      "time": "5pm",
+      "vehicle_count": 2
+    },
+    {
+      "location_type": "outdoor",
+      "location": "Outdoor",
+      "time": "10am",
+      "vehicle_count": 24
+    },
+    {
+      "location_type": "outdoor",
+      "location": "Outdoor",
+      "time": "10am",
+      "vehicle_count": 33
+    },
+    {
+      "location_type": "outdoor",
+      "location": "Outdoor",
+      "time": "10am",
+      "vehicle_count": 11
+    },
+    {
+      "location_type": "outdoor",
+      "location": "Outdoor",
+      "time": "11am",
+      "vehicle_count": 16
+    },
+    {
+      "location_type": "outdoor",
+      "location": "Outdoor",
+      "time": "11am",
+      "vehicle_count": 40
+    },
+    {
+      "location_type": "outdoor",
+      "location": "Outdoor",
+      "time": "11am",
+      "vehicle_count": 14
+    },
+    {
+      "location_type": "outdoor",
+      "location": "Outdoor",
+      "time": "12pm",
+      "vehicle_count": 31
+    },
+    {
+      "location_type": "outdoor",
+      "location": "Outdoor",
+      "time": "12pm",
+      "vehicle_count": 15
+    },
+    {
+      "location_type": "outdoor",
+      "location": "Outdoor",
+      "time": "12pm",
+      "vehicle_count": 14
+    },
+    {
+      "location_type": "outdoor",
+      "location": "Outdoor",
+      "time": "1pm",
+      "vehicle_count": 30
+    },
+    {
+      "location_type": "outdoor",
+      "location": "Outdoor",
+      "time": "1pm",
+      "vehicle_count": 12
+    },
+    {
+      "location_type": "outdoor",
+      "location": "Outdoor",
+      "time": "1pm",
+      "vehicle_count": 16
+    },
+    {
+      "location_type": "outdoor",
+      "location": "Outdoor",
+      "time": "2pm",
+      "vehicle_count": 5
+    },
+    {
+      "location_type": "outdoor",
+      "location": "Outdoor",
+      "time": "2pm",
+      "vehicle_count": 19
+    },
+    {
+      "location_type": "outdoor",
+      "location": "Outdoor",
+      "time": "2pm",
+      "vehicle_count": 19
+    },
+    {
+      "location_type": "outdoor",
+      "location": "Outdoor",
+      "time": "3pm",
+      "vehicle_count": 2
+    },
+    {
+      "location_type": "outdoor",
+      "location": "Outdoor",
+      "time": "3pm",
+      "vehicle_count": 16
+    },
+    {
+      "location_type": "outdoor",
+      "location": "Outdoor",
+      "time": "3pm",
       "vehicle_count": 17
     },
     {
-      "location_type": "Indoor",
-      "location": "2B",
+      "location_type": "outdoor",
+      "location": "Outdoor",
+      "time": "4pm",
+      "vehicle_count": 4
+    },
+    {
+      "location_type": "outdoor",
+      "location": "Outdoor",
+      "time": "4pm",
+      "vehicle_count": 22
+    },
+    {
+      "location_type": "outdoor",
+      "location": "Outdoor",
       "time": "4pm",
       "vehicle_count": 20
     },
     {
-      "location_type": "Indoor",
-      "location": "3B",
-      "time": "4pm",
-      "vehicle_count": 10
-    },
-    {
-      "location_type": "Indoor",
-      "location": "3B",
-      "time": "4pm",
-      "vehicle_count": 7
-    },
-    {
-      "location_type": "Indoor",
-      "location": "3B",
-      "time": "4pm",
-      "vehicle_count": 12
-    },
-    {
-      "location_type": "Indoor",
-      "location": "4B",
-      "time": "4pm",
-      "vehicle_count": 10
-    },
-    {
-      "location_type": "Indoor",
-      "location": "4B",
-      "time": "4pm",
-      "vehicle_count": 7
-    },
-    {
-      "location_type": "Indoor",
-      "location": "4B",
-      "time": "4pm",
-      "vehicle_count": 9
-    },
-    {
-      "location_type": "Indoor",
-      "location": "5B",
-      "time": "4pm",
-      "vehicle_count": 6
-    },
-    {
-      "location_type": "Indoor",
-      "location": "5B",
-      "time": "4pm",
-      "vehicle_count": 10
-    },
-    {
-      "location_type": "Indoor",
-      "location": "5B",
-      "time": "4pm",
-      "vehicle_count": 18
-    },
-    {
-      "location_type": "Indoor",
-      "location": "6B",
-      "time": "4pm",
-      "vehicle_count": 3
-    },
-    {
-      "location_type": "Indoor",
-      "location": "1B",
-      "time": "5pm",
-      "vehicle_count": 9
-    },
-    {
-      "location_type": "Indoor",
-      "location": "1B",
-      "time": "5pm",
-      "vehicle_count": 16
-    },
-    {
-      "location_type": "Indoor",
-      "location": "1B",
-      "time": "5pm",
-      "vehicle_count": 12
-    },
-    {
-      "location_type": "Indoor",
-      "location": "2B",
-      "time": "5pm",
-      "vehicle_count": 7
-    },
-    {
-      "location_type": "Indoor",
-      "location": "2B",
-      "time": "5pm",
-      "vehicle_count": 9
-    },
-    {
-      "location_type": "Indoor",
-      "location": "2B",
-      "time": "5pm",
-      "vehicle_count": 22
-    },
-    {
-      "location_type": "Indoor",
-      "location": "3B",
-      "time": "5pm",
-      "vehicle_count": 8
-    },
-    {
-      "location_type": "Indoor",
-      "location": "3B",
-      "time": "5pm",
-      "vehicle_count": 7
-    },
-    {
-      "location_type": "Indoor",
-      "location": "3B",
-      "time": "5pm",
-      "vehicle_count": 10
-    },
-    {
-      "location_type": "Indoor",
-      "location": "4B",
+      "location_type": "outdoor",
+      "location": "Outdoor",
       "time": "5pm",
       "vehicle_count": 6
     },
     {
-      "location_type": "Indoor",
-      "location": "4B",
-      "time": "5pm",
-      "vehicle_count": 12
-    },
-    {
-      "location_type": "Indoor",
-      "location": "4B",
-      "time": "5pm",
-      "vehicle_count": 8
-    },
-    {
-      "location_type": "Indoor",
-      "location": "5B",
-      "time": "5pm",
-      "vehicle_count": 4
-    },
-    {
-      "location_type": "Indoor",
-      "location": "5B",
-      "time": "5pm",
-      "vehicle_count": 9
-    },
-    {
-      "location_type": "Indoor",
-      "location": "5B",
-      "time": "5pm",
-      "vehicle_count": 13
-    },
-    {
-      "location_type": "Indoor",
-      "location": "6B",
-      "time": "5pm",
-      "vehicle_count": 3
-    },
-    {
       "location_type": "outdoor",
       "location": "Outdoor",
-      "time": "10am",
-      "vehicle_count": 7
-    },
-    {
-      "location_type": "outdoor",
-      "location": "Outdoor",
-      "time": "10am",
-      "vehicle_count": 1
-    },
-    {
-      "location_type": "outdoor",
-      "location": "Outdoor",
-      "time": "10am",
-      "vehicle_count": 14
-    },
-    {
-      "location_type": "outdoor",
-      "location": "Outdoor",
-      "time": "11am",
+      "time": "5pm",
       "vehicle_count": 9
     },
     {
       "location_type": "outdoor",
       "location": "Outdoor",
-      "time": "11am",
-      "vehicle_count": 1
-    },
-    {
-      "location_type": "outdoor",
-      "location": "Outdoor",
-      "time": "11am",
-      "vehicle_count": 1
-    },
-    {
-      "location_type": "outdoor",
-      "location": "Outdoor",
-      "time": "12pm",
-      "vehicle_count": 0
-    },
-    {
-      "location_type": "outdoor",
-      "location": "Outdoor",
-      "time": "12pm",
-      "vehicle_count": 2
-    },
-    {
-      "location_type": "outdoor",
-      "location": "Outdoor",
-      "time": "12pm",
-      "vehicle_count": 11
-    },
-    {
-      "location_type": "outdoor",
-      "location": "Outdoor",
-      "time": "1pm",
-      "vehicle_count": 0
-    },
-    {
-      "location_type": "outdoor",
-      "location": "Outdoor",
-      "time": "1pm",
-      "vehicle_count": 0
-    },
-    {
-      "location_type": "outdoor",
-      "location": "Outdoor",
-      "time": "1pm",
-      "vehicle_count": 8
-    },
-    {
-      "location_type": "outdoor",
-      "location": "Outdoor",
-      "time": "2pm",
-      "vehicle_count": 7
-    },
-    {
-      "location_type": "outdoor",
-      "location": "Outdoor",
-      "time": "2pm",
-      "vehicle_count": 0
-    },
-    {
-      "location_type": "outdoor",
-      "location": "Outdoor",
-      "time": "2pm",
-      "vehicle_count": 9
-    },
-    {
-      "location_type": "outdoor",
-      "location": "Outdoor",
-      "time": "3pm",
-      "vehicle_count": 8
-    },
-    {
-      "location_type": "outdoor",
-      "location": "Outdoor",
-      "time": "3pm",
-      "vehicle_count": 0
-    },
-    {
-      "location_type": "outdoor",
-      "location": "Outdoor",
-      "time": "3pm",
-      "vehicle_count": 7
-    },
-    {
-      "location_type": "outdoor",
-      "location": "Outdoor",
-      "time": "4pm",
-      "vehicle_count": 5
-    },
-    {
-      "location_type": "outdoor",
-      "location": "Outdoor",
-      "time": "4pm",
-      "vehicle_count": 0
-    },
-    {
-      "location_type": "outdoor",
-      "location": "Outdoor",
-      "time": "4pm",
-      "vehicle_count": 3
-    },
-    {
-      "location_type": "outdoor",
-      "location": "Outdoor",
       "time": "5pm",
-      "vehicle_count": 4
-    },
-    {
-      "location_type": "outdoor",
-      "location": "Outdoor",
-      "time": "5pm",
-      "vehicle_count": 0
-    },
-    {
-      "location_type": "outdoor",
-      "location": "Outdoor",
-      "time": "5pm",
-      "vehicle_count": 0
+      "vehicle_count": 27
     }
   ],
   "popular_times": {
     "Indoor": {
-      "10am": 118,
-      "11am": 117,
-      "12am": 108,
-      "1pm": 93,
-      "2pm": 210,
-      "3pm": 177,
-      "4pm": 188,
-      "5pm": 155
+      "10am": 123,
+      "11am": 139,
+      "12am": 111,
+      "1pm": 85,
+      "2pm": 146,
+      "3pm": 124,
+      "4pm": 131,
+      "5pm": 105
     },
     "outdoor": {
-      "10am": 22,
-      "11am": 11,
-      "12pm": 13,
-      "1pm": 8,
-      "2pm": 16,
-      "3pm": 15,
-      "4pm": 8,
-      "5pm": 4
+      "10am": 68,
+      "11am": 70,
+      "12pm": 60,
+      "1pm": 58,
+      "2pm": 43,
+      "3pm": 35,
+      "4pm": 46,
+      "5pm": 42
     }
   }
 }
