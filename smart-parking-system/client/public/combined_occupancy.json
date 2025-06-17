@@ -963,14 +963,17 @@
   ],
   "popular_times": {
     "Indoor": {
-      "10am": 123,
+      "10am": 130,
       "11am": 146,
       "12pm": 111,
       "1pm": 85,
       "2pm": 153,
       "3pm": 130,
       "4pm": 131,
-      "5pm": 105
+      "5pm": 105,
+      "2am": 7,
+      "6pm": 7,
+      "9pm": 7
     },
     "outdoor": {
       "10am": 68,
@@ -979,8 +982,9 @@
       "1pm": 58,
       "2pm": 43,
       "3pm": 35,
-      "4pm": 46,
-      "5pm": 42
+      "4pm": 67,
+      "5pm": 42,
+      "9pm": 14
     }
   },
   "2025-06-06": [
@@ -1015,6 +1019,12 @@
       "location": "4B",
       "time": "3pm",
       "vehicle_count": 6
+    },
+    {
+      "location_type": "Indoor",
+      "location": "1B",
+      "time": "2am",
+      "vehicle_count": 7
     }
   ],
   "2025-06-10": [
@@ -1039,6 +1049,44 @@
       "location": "1B",
       "time": "11am",
       "vehicle_count": 7
+    }
+  ],
+  "2025-06-08": [
+    {
+      "location_type": "Indoor",
+      "location": "3A",
+      "time": "10am",
+      "vehicle_count": 7
+    },
+    {
+      "location_type": "Indoor",
+      "location": "3A",
+      "time": "6pm",
+      "vehicle_count": 7
+    },
+    {
+      "location_type": "Indoor",
+      "location": "5A",
+      "time": "9pm",
+      "vehicle_count": 7
+    },
+    {
+      "location_type": "outdoor",
+      "location": "Outdoor",
+      "time": "9pm",
+      "vehicle_count": 7
+    },
+    {
+      "location_type": "outdoor",
+      "location": "Outdoor",
+      "time": "9pm",
+      "vehicle_count": 7
+    },
+    {
+      "location_type": "outdoor",
+      "location": "Outdoor",
+      "time": "4pm",
+      "vehicle_count": 21
     }
   ]
 }
